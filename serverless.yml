@@ -1,0 +1,76 @@
+service: serverless
+# app and org for use with dashboard.serverless.com
+app: myVueCalendarApp
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: ruby2.7
+  stage: test
+  region: us-east-1
+# you can add statements to the Lambda function's IAM Role here
+ iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+       - "dynamodb:BatchGet*"
+       - "dynamodb:DescribeStream"
+       - "dynamodb:DescribeTable"
+       - "dynamodb:Get*"
+       - "dynamodb:Query"
+       - "dynamodb:Scan"
+       - "dynamodb:BatchWrite*"
+       - "dynamodb:CreateTable"
+       - "dynamodb:Delete*"
+       - "dynamodb:Update*"
+       - "dynamodb:PutItem"
+     Resource: "arn:aws:dynamodb:*:*:table/myVueCalendarDB"
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+        path: users/create
+        method: get
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    myVueCalendarDB:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions: 
+          -  
+            AttributeName: "id"
+            AttributeType: "S"
+          - 
+            AttributeName: "timestamp"
+            AttributeType: "S"
+        # BillingMode: String
+        # ContributorInsightsSpecification: 
+          # ContributorInsightsSpecification
+        # GlobalSecondaryIndexes: 
+          # - GlobalSecondaryIndex
+        KeySchema: 
+          - 
+            AttributeName: "id"
+            KeyType: "HASH"
+          - 
+            AttributeName: "timestamp"
+            KeyType: "RANGE"
+        # LocalSecondaryIndexes: 
+          # - LocalSecondaryIndex
+        # PointInTimeRecoverySpecification: 
+          # PointInTimeRecoverySpecification
+        ProvisionedThroughput: 
+          ReadCapacityUnits: "5"
+          WriteCapacityUnits: "5"
+        # SSESpecification: 
+          # SSESpecification
+        # StreamSpecification: 
+          # StreamSpecification
+        TableName: "my-vue-calendar-db"
+        # Tags: 
+          # - Tag
+        # TimeToLiveSpecification: 
+          # TimeToLiveSpecification
