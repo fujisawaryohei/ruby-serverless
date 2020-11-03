@@ -11,8 +11,7 @@ https://github.com/fujisawaryohei/vue-calendar
 
 # 仕様
 ### DynamoDB
-- ID            パーティションキー       String
-- TimeStamp     ソートキー            String
+- TimeStamp    パーティションキー       String
 - content                            String
 
 ### lambda
