@@ -10,21 +10,21 @@ provider:
   stage: test
   region: ap-northeast-1
   # you can add statements to the Lambda function's IAM Role here
-iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "dynamodb:BatchGet*"
-      - "dynamodb:DescribeStream"
-      - "dynamodb:DescribeTable"
-      - "dynamodb:Get*"
-      - "dynamodb:Query"
-      - "dynamodb:Scan"
-      - "dynamodb:BatchWrite*"
-      - "dynamodb:CreateTable"
-      - "dynamodb:Delete*"
-      - "dynamodb:Update*"
-      - "dynamodb:PutItem"
-    Resource: "arn:aws:dynamodb:*:*:table/myVueCalendarDB"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:BatchGet*"
+        - "dynamodb:DescribeStream"
+        - "dynamodb:DescribeTable"
+        - "dynamodb:Get*"
+        - "dynamodb:Query"
+        - "dynamodb:Scan"
+        - "dynamodb:BatchWrite*"
+        - "dynamodb:CreateTable"
+        - "dynamodb:Delete*"
+        - "dynamodb:Update*"
+        - "dynamodb:PutItem"
+      Resource: "arn:aws:dynamodb:*:*:table/myVueCalendarDB"
 # you can define service wide environment variables here
 #  environment:
 #    variable1: value1
@@ -34,6 +34,12 @@ functions:
     events:
       - http:
           path: /hello
+          method: get
+  getTodo:
+    handler: handler.get_todo
+    events:
+      - http:
+          path: /todo
           method: get
 # you can add CloudFormation resource templates here
 resources:
