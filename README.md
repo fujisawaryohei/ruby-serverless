@@ -4,11 +4,10 @@ https://github.com/fujisawaryohei/vue-calendar
 ## Todo
 - [x] ServerlssFrameWorkでServerlss構成のコード化とデプロイ
 - [x] AWS SDK For Rubyを使用してデプロイしたLambdaでレスポンスができるか確認
-- [ ] ServelessFrameworkで環境再構築
-- [ ] DynamoDBでtodo属性の追加と項目の追加
-- [ ] Lambda for RubyでDynamoDBでGetItemする
-- [ ] Lambda for RubyでDynamoDBでPutItemする
-- [ ] 資料作り
+- [x] LambdaからDynamoDBにGetItemする
+- [ ] LambdaからQueryStringを使用してDynamoDBにGetItemする
+- [ ] LambdaからDynamoDBでPutItemする
+- [x] 資料作り
 
 # 仕様
 ### DynamoDB
