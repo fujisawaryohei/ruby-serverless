@@ -3,6 +3,9 @@ service: serverless
 frameworkVersion: '2'
 provider:
   name: aws
+# Setting API GateWay logs
+  logs:
+    restApi: true
   runtime: ruby2.7
   stage: test
   region: ap-northeast-1
