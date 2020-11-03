@@ -24,7 +24,7 @@ provider:
         - "dynamodb:Delete*"
         - "dynamodb:Update*"
         - "dynamodb:PutItem"
-      Resource: "arn:aws:dynamodb:*:*:table/myVueCalendarDB"
+      Resource: "arn:aws:dynamodb:ap-northeast-1:000796434707:table/my-vue-calendar-db"
 # you can define service wide environment variables here
 #  environment:
 #    variable1: value1
@@ -48,9 +48,6 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions: 
-          -  
-            AttributeName: "id"
-            AttributeType: "S"
           - 
             AttributeName: "timestamp"
             AttributeType: "S"
@@ -61,11 +58,8 @@ resources:
           # - GlobalSecondaryIndex
         KeySchema: 
           - 
-            AttributeName: "id"
-            KeyType: "HASH"
-          - 
             AttributeName: "timestamp"
-            KeyType: "RANGE"
+            KeyType: "HASH"
         # LocalSecondaryIndexes: 
           # - LocalSecondaryIndex
         # PointInTimeRecoverySpecification: 
