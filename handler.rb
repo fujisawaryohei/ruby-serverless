@@ -18,15 +18,24 @@ def get_todo(event:, context:)
   params = {
     table_name: 'my-vue-calendar-db',
     key: {
-      timestamp: '2020-10-1'
+      timestamp: event['query']['timestamp']
     }
   }
   response = table.get_item(params)
-  {
-    statusCode: 200,
-    body: {
-      timestamp: response.item['timestamp'],
-      content: response.item['todo']
+  unless response.item.nil?
+    {
+      statusCode: 200,
+      body: {
+        timestamp: response.item['timestamp'],
+        content: response.item['todo']
+      }.to_json
+    }
+  else
+    {
+      statusCode: 200,
+      body: {
+        message: 'データがありません'
+      }
     }.to_json
-  }
+  end
 end
