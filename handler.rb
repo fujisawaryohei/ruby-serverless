@@ -39,3 +39,23 @@ def get_todo(event:, context:)
     }.to_json
   end
 end
+
+# def put_todo(event:, context:)
+#   dynamoDB = Aws::DynamoDB::Resource.new(region: 'ap-northeast-1')
+#   table = dynamoDB.table('my-vue-calendar-db')
+#   params = {
+#     item: {
+#       "timestamp" => "2020-11-3",
+#       "todo" => "たのしいRubyを読む"
+#     }
+#   }
+#   response = table.put_item(params)
+#   if response
+#     {
+#       statusCode: 200,
+#       body: {
+#         message: 'Todoを追加しました'
+#       }
+#     }
+#   end
+# end

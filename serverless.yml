@@ -50,6 +50,11 @@ functions:
               #   foo: false
               # paths:
               #   bar: false
+  # putTodo:
+  #   handler: handler.put_todo
+  #   - http:
+  #       method: put
+  #       path: /todo
 # you can add CloudFormation resource templates here
 resources:
   Resources:
