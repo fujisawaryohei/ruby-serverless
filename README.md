@@ -12,7 +12,7 @@ https://github.com/fujisawaryohei/vue-calendar
 # 仕様
 ### DynamoDB
 - TimeStamp    パーティションキー       String
-- content                            String
+- todo                               String
 
 ### lambda
 - GETに対応したLambdaハンドラー（API GatewayからQuery String取得して→DynamoDBで検索かける）
